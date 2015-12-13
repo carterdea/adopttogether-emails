@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>AdoptTogether</title>
+    <title>Your donation receipt from AdoptTogether</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style type="text/css">
@@ -133,9 +133,9 @@
                           </td>
                         </tr>
                         <tr>
-                          <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font: 16px/24px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                            Hey *|FIRST_NAME|*,<br />
-                            Thank you for your generous donation to AdoptTogether, designated to the *|RECIPIENT_LAST_NAME|* family.
+                          <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font: 16px/28px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
+                            Hey *|DONOR_FIRST_NAME|*,<br />
+                            Thank you for your generous donation to AdoptTogether*|IF:RECIPIENT_TYPE=Family|*, designated to the *|RECIPIENT_LAST_NAME|* family*|END:IF|*.
                           </td>
                         </tr>
                       </table>
@@ -154,15 +154,16 @@
                                     <tr>
                                       <td class="table-text" width="320" valign="top" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:18px/24px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
                                         Your Donation to AdoptTogether<br />
-                                        <span style="font-size:14px; color:#888;">for *|RECIPIENT_LAST_NAME|*’s Adoption</span>
+                                        *|IF:RECIPIENT_TYPE=Family|*<span style="font-size:14px; color:#888;">for *|RECIPIENT_LAST_NAME|*’s Adoption</span>*|END:IF|*
                                       </td>
                                       <td class="table-text" width="220" valign="top" align="right" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:18px/24px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                                        Donation *|AMOUNT|*
+                                        Monthly Donation *|AMOUNT|*
                                       </td>
                                     </tr>
                                   </table>
                                 </td>
                               </tr>
+                              *|IF:RECIPIENT_TYPE=Family|*
                               <tr>
                                 <td style="padding: 0 0 12px;">
                                   <table cellpadding="0" cellspacing="0" width="100%">
@@ -175,6 +176,7 @@
                                   </table>
                                 </td>
                               </tr>
+                              *|END:IF|*
                             </table>
                           </td>
                         </tr>
@@ -205,6 +207,7 @@
                       <a href="*|CANCEL_MONTHLY_DONATION_URL|*" target="_blank" style="text-decoration:underline; color:#76cc1e;">*|CANCEL_MONTHLY_DONATION_URL|*</a>
                     </td>
                   </tr>
+                  *|IF:RECIPIENT_TYPE=Family|*
                   <!-- post with image -->
                   <tr>
                     <td style="padding: 0 0 14px;">
@@ -216,12 +219,12 @@
                         </tr>
                         <tr>
                           <td class="img-flex" style="padding: 0 0 13px;">
-                            <img src="*|FAMILY_PHOTO_URL|*" height="387" width="580" alt="" style="vertical-align: top; width:580px; height:387px;" />
+                            <img src="*|FAMILY_IMAGE_URL|*" height="387" width="580" alt="" style="vertical-align: top; width:580px; height:387px;" />
                           </td>
                         </tr>
                         <tr>
                           <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 18px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555; padding: 0 0 1px;">
-                            *|RECIPIENT_NAME|*
+                            *|RECIPIENT_FULL_NAME|*
                           </td>
                         </tr>
                         <tr>
@@ -256,7 +259,7 @@
                                               <img src="http://adopttogether.s3.amazonaws.com/email/ico-twitter.png" height="36" width="28" alt="" style="vertical-align: top; width:28px; height:36px;" />
                                             </td>
                                             <td width="151" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/19px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff;">
-                                              <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 8px 8px 0;">
+                                              <a href="https://twitter.com/home?status=I%20just%20donated%20to%20the%20*|RECIPIENT_LAST_NAME|*%20family%20on%20%40AdoptT,%20you%20should%20too!%20*|FAMILY_PROFILE_URL_PARAMETERIZED|*" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 8px 8px 0;">
                                                 Share on Twitter
                                               </a>
                                             </td>
@@ -293,16 +296,74 @@
                         </tr>
                         <tr>
                           <td align="center" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:15px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                            <a href="https://www.adopttogether.org/thejohnsons" target="_blank" style="text-decoration:none; color:#76cc1e;">
-                              https://www.adopttogether.org/thejohnsons
+                            <a href="*|FAMILY_PROFILE_URL|*" target="_blank" style="text-decoration:none; color:#76cc1e;">
+                              *|FAMILY_PROFILE_URL|*
                             </a>
                           </td>
                         </tr>
                       </table>
                     </td>
                   </tr>
+                  *|END:IF|*
+                  *|IF:RECIPIENT_TYPE=Charity|*
+                                    <tr>
+                    <td style="padding: 0 0 26px;">
+                      <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                          <td style="padding: 0 0 15px;">
+                            <table cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                              <tr>
+                                <th class="flex" width="189" align="left" style="padding: 0; vertical-align: top;">
+                                  <table cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                    <tr>
+                                      <td class="active" bgcolor="#50abf1" style="border-radius:5px; padding: 0 0 0 21px;">
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                          <tr>
+                                            <td width="28">
+                                              <img src="http://adopttogether.s3.amazonaws.com/email/ico-twitter.png" height="36" width="28" alt="" style="vertical-align: top; width:28px; height:36px;" />
+                                            </td>
+                                            <td width="151" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/19px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff;">
+                                              <a href="https://twitter.com/home?status=I%20just%20donated%20to%20%40AdoptT,%20you%20should%20too!%20http://www.adopttogether.org" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 8px 8px 0;">
+                                                Share on Twitter
+                                              </a>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </th>
+                                <th class="flex" width="19" height="10" style="padding: 0;"></th>
+                                <th class="flex" width="204" align="left" style="padding: 0; vertical-align: top;">
+                                  <table cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                    <tr>
+                                      <td class="active" bgcolor="#39579a" style="border-radius:5px; padding: 0 0 0 16px;">
+                                        <table cellpadding="0" cellspacing="0" width="100%">
+                                          <tr>
+                                            <td width="32">
+                                              <img src="http://adopttogether.s3.amazonaws.com/email/ico-facebook.png" height="36" width="32" alt="" style="vertical-align: top; width:32px; height:36px;" />
+                                            </td>
+                                            <td width="172" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/19px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff;">
+                                              <a href="https://www.facebook.com/Adoptt" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 8px 8px 0;">
+                                                Share on Facebook
+                                              </a>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </th>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  *|END:IF|*
                   <tr>
-                    <td style="padding: 0 0 20px;">
+                    <td style="padding: 0 0 0;">
                       <table cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                           <td style="font:mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/24px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555; padding: 0 0 1px;">
@@ -310,13 +371,13 @@
                           </td>
                         </tr>
                         <tr>
-                          <td style="padding: 0 0 19px;">
+                          <td style="padding: 0 0 4px;">
                             <table cellpadding="0" cellspacing="0" width="100%">
                               <tr>
                                 <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:14px/23px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                                  <b style="font-weight: 500;">Donor Name:</b> *|FIRST_NAME|* *|LAST_NAME|* <br />
+                                  <b style="font-weight: 500;">Donor Name:</b> *|DONOR_FULL_NAME|*<br />
                                   <b style="font-weight: 500;">Donation Amount:</b> *|TOTAL|* <br />
-                                  The tax-deductible amount of your gift is listed above. Please save this receipt for your tax records as confirmation of your donation. If you have any questions simply reply to this email or to <a href="mailto:taxreceipts@adopttogether.org" style="color:#555;">taxreceipts@adopttogether.org</a>. <br /><br />
+                                  The tax-deductible amount of your gift is listed above. Please save this receipt for your tax records as confirmation of your donation.<br /><br />
                                 </td>
                               </tr>
                               <tr>
@@ -327,184 +388,22 @@
                             </table>
                           </td>
                         </tr>
-                        <tr>
-                          <td style="padding: 0 0 19px;">
-                            <table cellpadding="0" cellspacing="0" width="100%">
-                              <tr>
-                                <td style="padding: 0 0 18px;">
-                                  <table cellpadding="0" cellspacing="0" align="center" width="160" style="margin: 0 auto;">
-                                    <tr>
-                                      <td class="active" align="center" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; mso-padding-alt:8px 10px; border-radius: 5px;" bgcolor="#7b7d79">
-                                        <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 10px;">Visit Their Profile</a>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <table cellpadding="0" cellspacing="0" align="center" width="160" style="margin: 0 auto;">
-                                    <tr>
-                                      <td class="active" align="center" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; mso-padding-alt:8px 10px; border-radius: 5px;" bgcolor="#76cc1e">
-                                        <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 10px;">Post An Update</a>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <table cellpadding="0" cellspacing="0" width="100%">
-                              <tr>
-                                <td class="ico-check" valign="top" width="50">
-                                  <table cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                      <td style="padding: 5px 0 0;">
-                                        <img src="http://adopttogether.s3.amazonaws.com/email/ico-check.png" height="32" width="32" alt="" style="vertical-align: top; width:32px; height:32px;" />
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                                <td valign="top">
-                                  <table cellpadding="0" cellspacing="0" width="100%">
-                                    <tr>
-                                      <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 18px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555; padding: 0 0 1px;">
-                                        Get the word out!
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:15px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis congue mi diam. Maecenas efficitur, justo et faucibus blandit, augue tortor viverra tellus, in tempus velit elit pretium neque. Sed vehicula, sapien nec convallis venenatis, risus orci laoreet nisi, pharetra laoreet augue neque eget turpis. Duis consectetur, erat quis placerat aliquet, ligula augue consequat lacus. Here is your URL: <a href="*|FAMILY_PROFILE_URL|*" target="_blank" style="text-decoration:none; color:#76cc1e;">*|FAMILY_PROFILE_URL|*</a>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
                       </table>
                     </td>
                   </tr>
                 </table>
-              </td>
-            </tr>
-            <!-- block with bg-01 -->
-            <tr>
-              <td class="holder" bgcolor="#1c1d1b" style="padding: 30px 120px 33px;">
-                <table cellpadding="0" cellspacing="0" width="100%">
-                  <tr>
-                    <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 18px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#ddd; padding: 0 0 3px;">
-                      Get the word out!
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:15px/18px Helvetica Neue, Helvetica, Arial, sans-serif; color:#bbb; padding: 0 0 18px;">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis congue mi diam. Maecenas efficitur, justo et faucibus blandit, augue tortor viverra tellus, in tempus velit elit pretium neque. Sed vehicula, sapien nec convallis venenatis, risus orci laoreet nisi, pharetra laoreet augue neque eget turpis. Duis consectetur, erat quis placerat aliquet, ligula augue consequat lacus. Here is your URL: <br />
-                      <a href="http://www.adopttogether.org/the-johnsons" target="_blank" style="text-decoration:none; color:#8dc73f;">http://www.adopttogether.org/the-johnsons</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <table cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td class="active" align="center" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; mso-padding-alt:8px 24px; border-radius:5px;" bgcolor="#76cc1e">
-                            <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 24px;">Post An Update</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <!-- block with bg-02 -->
-            <tr>
-              <td class="holder" bgcolor="#f5f5f5" style="padding: 30px 120px 33px;">
-                <table cellpadding="0" cellspacing="0" width="100%">
-                  <tr>
-                    <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 18px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555; padding: 0 0 3px;">
-                      Get the word out!
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:15px/18px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555; padding: 0 0 18px;">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis congue mi diam. Maecenas efficitur, justo et faucibus blandit, augue tortor viverra tellus, in tempus velit elit pretium neque. Sed vehicula, sapien nec convallis venenatis, risus orci laoreet nisi, pharetra laoreet augue neque eget turpis. Duis consectetur, erat quis placerat aliquet, ligula augue consequat lacus. Here is your URL: <br />
-                      <a href="http://www.adopttogether.org/the-johnsons" target="_blank" style="text-decoration:none; color:#8dc73f;">http://www.adopttogether.org/the-johnsons</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <table cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td class="active" align="center" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; mso-padding-alt:8px 24px; border-radius:5px;" bgcolor="#7b7d79">
-                            <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:10px 20px;">Visit Their Profile</a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <!-- block with bg-01 -->
-            <tr>
-              <td class="p0" bgcolor="#26272b" background="http://s2.postimg.org/yaux24jx5/bg_01.jpg" style="background:#26272b url(http://s2.postimg.org/yaux24jx5/bg_01.jpg) no-repeat; background-size:820px 320px; background-position:50% 0; padding: 0 120px;">
-                <!--[if gte mso 9]>
-                  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:580px; height:320px;">
-                    <v:fill type="tile" src="http://s2.postimg.org/e1bds7mxl/bg_02.jpg" color="#26272b" />
-                    <v:textbox inset="0,0,0,0">
-                      <![endif]-->
-                        <table width="100%" cellpadding="0" cellspacing="0">
-                          <tr>
-                            <td class="bg-block" height="320" style="padding: 0 10px;">
-                              <table cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                  <td class="aligncenter" style="font:mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 24px/40px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff;">
-                                    Thanks for your donation!
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td class="aligncenter" style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:16px/22px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; padding: 0 0 14px;">
-                                    This is the leading text. It’s pretty great and it explains what this big photo is
-                                    about in a short, succinct, sentence.
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <table class="table-center" cellpadding="0" cellspacing="0">
-                                      <tr>
-                                        <td class="active" align="center" style="font:mso-ascii-font-family: Helvetica, Arial, sans-serif; font:500 16px/20px Helvetica Neue, Helvetica, Arial, sans-serif; color:#fff; mso-padding-alt:8px 19px; border-radius:5px;" bgcolor="#76cc1e">
-                                          <a href="#" target="_blank" style="text-decoration:none; color:#fff; display:block; padding:8px 19px;">Create a Family Profile</a>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </td>
-                                </tr>
-                              </table>
-                            </td>
-                          </tr>
-                        </table>
-                      <!--[if gte mso 9]>
-                    </v:textbox>
-                  </v:rect>
-                <![endif]-->
               </td>
             </tr>
             <!-- pre-footer-block -->
             <tr>
-              <td class="holder" style="padding: 21px 120px 24px;">
+              <td class="holder" style="padding: 21px 120px 14px;">
                 <table cellpadding="0" cellspacing="0" width="100%">
                   <tr>
                     <td>
                       <table cellpadding="0" cellspacing="0" width="100%">
                         <tr>
                           <td style="mso-ascii-font-family: Helvetica, Arial, sans-serif; font:15px/18px Helvetica Neue, Helvetica, Arial, sans-serif; color:#555;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis congue mi diam. Maecenas efficitur, justo et faucibus blandit, augue tortor viverra tellus, in tempus velit.<br /><br />
-                            Just reply to this email if you have any other questions!<br /><br />
+                             If you have any questions simply reply to this email or to <a href="mailto:taxreceipts@adopttogether.org" style="color:#555;">taxreceipts@adopttogether.org</a>. Thanks!<br /><br />
                             The AdoptTogether Team
                           </td>
                         </tr>
